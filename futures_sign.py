@@ -1,12 +1,11 @@
+from cred import KEY, SECRET
 import hmac
 import time
 import hashlib
 import requests
 from urllib.parse import urlencode
 
-KEY = ''
-SECRET = ''
-BASE_URL = 'http://fapi.binance.com' # testnet base url
+BASE_URL = 'https://fapi.binance.com' # testnet base url
 
 ''' ======  begin of functions, you don't need to touch ====== '''
 def hashing(query_string):
@@ -51,7 +50,6 @@ def send_public_request(url_path, payload={}):
     url = url_path
     if query_string:
         url = url + '?' + query_string
-    print("{}".format(url))
     response = dispatch_request('GET')(url=url)
     return response.json()
 
